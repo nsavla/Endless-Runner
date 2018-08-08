@@ -6,6 +6,7 @@ public class Obstacle : MonoBehaviour {
 
     public float speed;
     public GameObject effect;
+    public GameObject explosionSound;
 
 	void Update () {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -18,6 +19,7 @@ public class Obstacle : MonoBehaviour {
             other.GetComponent<Player>().health--;
             other.GetComponent<Player>().camAnim.SetTrigger("shake");
             Instantiate(effect, transform.position, Quaternion.identity);
+            Instantiate(explosionSound, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }   
     }

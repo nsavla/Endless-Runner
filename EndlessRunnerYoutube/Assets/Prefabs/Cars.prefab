@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   effect: {fileID: 1009277942065174, guid: 02aa361cf5f058a448a8ca73948b4423, type: 2}
+  explosionSound: {fileID: 1565488873920616, guid: b45cbc2d919380942b9ed623d498f2c2,
+    type: 2}
 --- !u!114 &114499529855895570
 MonoBehaviour:
   m_ObjectHideFlags: 1

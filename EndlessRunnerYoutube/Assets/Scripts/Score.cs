@@ -7,6 +7,7 @@ public class Score : MonoBehaviour {
 
     public int score;
     public Text scoreDisplay;
+    public Text highScoreDisplay;
 
     private void Update()
     {
@@ -22,5 +23,19 @@ public class Score : MonoBehaviour {
     public int getScore()
     {
         return score;
+    }
+
+    public int getHighScore()
+    {
+        return PlayerPrefs.GetInt("highestScore");
+    }
+
+    public void setHighScore()
+    {
+        if ((!PlayerPrefs.HasKey("highestScore")) || (score > PlayerPrefs.GetInt("highestScore"))) 
+        {
+            PlayerPrefs.SetInt("highestScore", score);
+        }
+        highScoreDisplay.text = PlayerPrefs.GetInt("highestScore").ToString();
     }
 }

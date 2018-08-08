@@ -18,8 +18,12 @@ public class Player : MonoBehaviour {
     public Animator camAnim;
     public Text healthDisplay;
 
+    public GameObject runningSound;
     public GameObject spawner;
     public GameObject restartDisplay;
+    public GameObject highScoreDisplay;
+    public GameObject highScoreText;
+    public GameObject ScoreManager;
 
     private void Start()
     {
@@ -32,6 +36,10 @@ public class Player : MonoBehaviour {
         if (health <= 0) {
             spawner.SetActive(false);
             restartDisplay.SetActive(true);
+            highScoreDisplay.SetActive(true);
+            highScoreText.SetActive(true);
+            ScoreManager.GetComponent<Score>().setHighScore();
+           
             Destroy(gameObject);
         }
 
@@ -43,10 +51,12 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.UpArrow) && transform.position.y < maxY) {
             camAnim.SetTrigger("shake");
             Instantiate(moveEffect, transform.position, Quaternion.identity);
+            Instantiate(runningSound, transform.position, Quaternion.identity);
             targetPos = new Vector2(transform.position.x, transform.position.y + increment);
         } else if (Input.GetKeyDown(KeyCode.DownArrow) && transform.position.y > minY) {
             camAnim.SetTrigger("shake");
             Instantiate(moveEffect, transform.position, Quaternion.identity);
+            Instantiate(runningSound, transform.position, Quaternion.identity);
             targetPos = new Vector2(transform.position.x, transform.position.y - increment);
         }
     }
